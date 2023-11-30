@@ -1,9 +1,11 @@
 class Api::V1::PostsController < ApplicationController
+  # @route GET /api/v1/posts (api_v1_posts)
   def index
     @posts = Post.all
     render json: @posts
   end
 
+  # @route POST /api/v1/posts (api_v1_posts)
   def create
     @post = Post.create post_params
 
@@ -14,6 +16,7 @@ class Api::V1::PostsController < ApplicationController
     end
   end
 
+  # @route DELETE /api/v1/posts/:id (api_v1_post)
   def destroy
     @post = Post.find params[:id]
     @post.destroy
